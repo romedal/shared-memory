@@ -19,14 +19,14 @@
 
 int main(void) {
 	int segment_id;
-	char shared_memory;
+	char* shared_memory;
 	struct shmid_ds shmbuffer;
 	int segment_size;
 	const int shared_segment_size = 0x6400;
 	segment_id = shmget(IPC_PRIVATE, shared_segment_size, IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR);
 
 	shared_memory = (char *) shmat(segment_id, 0, 0);
-	if (-1 == shared_memory)
+	if (shared_memory == (char *)(-1))
 	{
 		printf("shmat errno - %s\n",strerror(errno));
 	}
