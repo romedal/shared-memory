@@ -36,7 +36,7 @@ int main(void) {
 	}
 	if (-1 == shmdt(shared_memory))
 	{
-		printf("shmdt errno - %s\n",strerror(errno));
+		printf("shmdt errno  - %s\n",strerror(errno));
 	}
 	shmctl(segment_id, IPC_RMID, 0);
 
